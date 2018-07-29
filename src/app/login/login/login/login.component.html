@@ -1,0 +1,75 @@
+<div class="container-fluid ">
+  <div class="row d-flex justify-content-center h-100 ">
+    <div class=" col-sm-8 col-md-6  col-lg-5 col-xl-3 row-conformity row-centered  mt-3 align-self-center bg-light">
+      <div class="card mt-4 p-3">
+
+
+        <p class ="small">Login into your Company account</p>
+
+        <form class="card form-horizontal" id="email-input" novalidate
+              [formGroup]="loginForm" (submit)="onSignIn(loginForm)">
+
+          <div class="form-group" id="email-form-group">
+
+            <label for="email" [ngClass]="toSmall(loginForm.get('email'), emailFocus)">Input email</label>
+            <input type="email" id="email" class="form-control mt-3 pt-2 pb-4"
+                   formControlName="email" (focus)="emailFocus = true" (blur)="emailFocus = false">
+            <div class="alert-box">
+              <p *ngIf="loginForm.get('email').hasError('required')&&
+                        loginForm.get('email').touched">
+                E-mail is required
+              </p>
+              <p *ngIf="loginForm.get('email').hasError('pattern')&&
+                        loginForm.get('email').dirty">
+                Input correct e-mail address
+              </p>
+            </div>
+
+          </div>
+
+          <div class="form-group" id="password-form-group">
+
+            <label for="password">
+              <p [ngClass]="toSmall(loginForm.get('password'), passwordFocus)">Password</p>
+            </label>
+
+            <input type="password" id="password" class="form-control mt-3 pt-2 pb-4"
+                   formControlName="password" (focus)="passwordFocus = true" (blur)="passwordFocus = false">
+            <div class="alert-box">
+              <p *ngIf="loginForm.get('password').hasError('required')&&
+                        loginForm.get('password').touched">
+                Password is required
+              </p>
+            </div>
+
+          </div>
+
+          <div class="alert-box">
+            <p *ngIf="serverError" class="err-msg">Internal server error</p>
+            <p *ngIf="wrongPassword" class="err-msg">Wrong e-mail or login. Try again</p>
+          </div>
+
+
+          <div class="checkbox mb-3" >
+
+            <input type="checkbox" value="remember-me" id = "remember" >
+            <div  class="checkBtn" (click)='toggleKeep()'>.</div>
+            <label class = "checkBx "for="remember" [class.checkBx1]='keepMarker' >Keep me signed in</label>
+
+          </div>
+          <input type="submit" class="btn btn-lg btn-block"
+                  [disabled]="loginForm.invalid" value="login">
+        </form>
+
+      </div>
+      <div class="mt-4">
+        <p class="text-center" ><a (click)="forgetPassword()" style="cursor: pointer">Forget password?</a></p>
+        <p class="text-center">
+          <span >Do not have an accounts? </span>
+          <a (click)="registerUser()" style="cursor: pointer">Sign up</a> </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

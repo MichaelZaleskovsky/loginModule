@@ -1,0 +1,104 @@
+<div class="container-fluid ">
+  <div class="row d-flex justify-content-center h-100 ">
+    <div class=" col-sm-8 col-md-6  col-lg-5 col-xl-3 row-conformity row-centered  mt-3 align-self-center bg-light">
+      <div class="card mt-4 p-3">
+        <p class ="small">Sign up with your Company account</p>
+
+        <form class="card form-horizontal" id="register-input" novalidate
+              [formGroup]="regForm" (submit)="onSubmit(regForm)">
+
+          <div class="form-group" id="email-form-group">
+
+            <label for="email" [ngClass]="toSmall(regForm.get('email'), emailFocus)">Input email</label>
+            <input type="email" id="email" class="form-control mt-3 pt-2 pb-4"
+                   formControlName="email" (focus)="emailFocus = true" (blur)="emailFocus = false">
+
+            <div class="alert-box">
+              <p *ngIf="regForm.get('email').hasError('required')&&
+                        regForm.get('email').touched">
+                E-mail is required
+              </p>
+              <p *ngIf="regForm.get('email').hasError('pattern')&&
+                        regForm.get('email').touched">
+                Input correct e-mail address
+              </p>
+            </div>
+
+          </div>
+
+          <div class="form-group" id="first-name-form-group">
+
+            <label for="firstName" [ngClass]="toSmall(regForm.get('firstName'), firstNameFocus)">Input first name</label>
+            <input type="text" id="firstName" class="form-control mt-3 pt-2 pb-4"
+                   formControlName="firstName" (focus)="firstNameFocus = true" (blur)="firstNameFocus = false">
+
+            <div class="alert-box">
+              <p *ngIf="regForm.get('firstName').hasError('required')&&
+                        regForm.get('firstName').touched">
+                First name is required
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="form-group" id="second-name-form-group">
+
+            <label for="secondName" [ngClass]="toSmall(regForm.get('secondName'), secondNameFocus)">Input second name</label>
+            <input type="text" id="secondName" class="form-control mt-3 pt-2 pb-4"
+                   formControlName="secondName" (focus)="secondNameFocus = true" (blur)="secondNameFocus = false">
+            <div class="alert-box">
+              <p *ngIf="regForm.get('secondName').hasError('required')&&
+                        regForm.get('secondName').touched">
+                Second name is required
+              </p>
+            </div>
+
+          </div>
+
+          <div class="form-group" id="password-form-group">
+
+            <label for="password">
+              <p [ngClass]="toSmall(regForm.get('password'), passwordFocus)">Password</p>
+            </label>
+
+            <input type="password" id="password" class="form-control mt-3 pt-2 pb-4"
+                   formControlName="password" (focus)="passwordFocus = true" (blur)="passwordFocus = false">
+            <div class="alert-box">
+              <p *ngIf="regForm.get('password').hasError('required')&&
+                        regForm.get('password').touched">
+                Password is required
+              </p>
+              <p *ngIf="regForm.get('password').hasError('minlength')&&
+                        regForm.get('password').touched">
+                Minimum length is 8 letters
+              </p>
+              <p *ngIf="(regForm.get('password').hasError('pattern') ||
+                         regForm.get('password').hasError('minlength')) &&
+                         regForm.get('password').dirty">
+                Password must have at least one lowercase and uppercase letter,
+                digit and special symbol: !@#$%^&* and at least 8 symbols long
+              </p>
+            </div>
+
+          </div>
+
+          <div class="alert-box">
+            <p *ngIf="serverError" class="err-msg">Internal server error</p>
+            <p *ngIf="wrongPassword" class="err-msg">Wrong e-mail or login. Try again</p>
+          </div>
+
+
+         <input type="submit" class="btn btn-lg btn-block"
+                 [disabled]="regForm.invalid" value="Sign up">
+        </form>
+
+      </div>
+      <div class="mt-4">
+        <p class="text-center"><span >Alreaady have an accounts? </span> <a routerLink="/login">Sign in</a> </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
