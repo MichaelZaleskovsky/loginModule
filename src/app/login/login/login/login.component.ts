@@ -90,7 +90,10 @@ export class LoginComponent implements OnInit {
   }
 
   forgetPassword() {
-    this.isLogin.setUser(this.user);
+    let user: User = new User();
+    user.email = this.loginForm.value.email;
+
+    this.isLogin.setUser(user);
     this.router.navigateByUrl('/restore');
   }
 

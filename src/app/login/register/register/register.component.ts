@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../data/User";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   regForm: FormGroup;
 
 
-  constructor() {
+  constructor(private router: Router) {
     this.user  = new User();
   }
 
@@ -30,11 +31,11 @@ export class RegisterComponent implements OnInit {
       {
         email: new FormControl("", [
           Validators.required,
-          Validators.pattern('(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}')
+          Validators.pattern('.+@.+\\..+')
         ]),
         password: new FormControl("", [
           Validators.required,
-          Validators.pattern('.+@.+\\..+')
+          Validators.pattern('(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}')
         ]),
         firstName: new FormControl("", [
           Validators.required
@@ -52,5 +53,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(form) {
 
+    this.router.navigateByUrl('/login')
   }
 }

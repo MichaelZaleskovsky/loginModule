@@ -14,6 +14,7 @@ export class RestoreComponent implements OnInit {
   sendingMsg = false;
   wrongEmail = false;
   restoreForm: FormGroup;
+  emailFocus = false;
 
   constructor(private isLogin: IsLoginService,
               private router: Router,
@@ -21,11 +22,12 @@ export class RestoreComponent implements OnInit {
   { }
 
   ngOnInit() {
+    console.log(this.isLogin.getUser());
     this.restoreForm = new FormGroup(
       {
         email: new FormControl(this.isLogin.getUser().email, [
           Validators.required,
-          Validators.pattern('(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}')
+          Validators.pattern('.+@.+\\..+')
         ])
       }
     )
@@ -45,7 +47,9 @@ export class RestoreComponent implements OnInit {
   }
 
   toSmall(formControl, focus): string {
-    return focus || formControl.dirty ? 'small-label' : 'big-label';
+    console.log("this.isLogin.getUser().email: " + this.isLogin.getUser().email);
+    console.log("!this.isLogin.getUser().email: " + !this.isLogin.getUser().email);
+    return this.isLogin.getUser().email || focus || formControl.dirty ? 'small-label' : 'big-label';
   }
 
 }
