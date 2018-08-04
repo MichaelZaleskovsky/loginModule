@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpRequestService} from "../../../services/http-request.service";
-import {IsLoginService} from "../../../services/is-login.service";
-import {Router} from "@angular/router";
-import {User} from "../../../data/User";
-import {storedName} from "../../../data/storedName";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpRequestService} from '../../../services/http-request.service';
+import {IsLoginService} from '../../../services/is-login.service';
+import {Router} from '@angular/router';
+import {User} from '../../../data/User';
+import {storedName} from '../../../data/storedName';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -34,15 +34,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = new FormGroup(
       {
-        email: new FormControl("", [
+        email: new FormControl('', [
           Validators.required,
           Validators.pattern('(.+@.+\\..+)')
         ]),
-        password: new FormControl("", [
+        password: new FormControl('', [
           Validators.required
         ])
       }
-    )
+    );
   }
 
   toSmall(formControl, focus): string {

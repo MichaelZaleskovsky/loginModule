@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IsLoginService} from '../../../services/is-login.service';
 import {Router} from '@angular/router';
 import {HttpRequestService} from '../../../services/http-request.service';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-restore',
@@ -47,9 +47,6 @@ export class RestoreComponent implements OnInit {
   }
 
   toSmall(formControl, focus): string {
-    console.log("this.isLogin.getUser().email: " + this.isLogin.getUser().email);
-    console.log("!this.isLogin.getUser().email: " + !this.isLogin.getUser().email);
     return this.isLogin.getUser().email || focus || formControl.dirty ? 'small-label' : 'big-label';
   }
-
 }

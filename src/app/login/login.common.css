@@ -1,11 +1,113 @@
-.big-label {
-  position: relative;
-  top: 5rem;
-  color: #0055c1;
-  font-size: 1.2rem;
+*{
+  font-family: Arial;
+}
+.container-fluid{
+  height: 100vh;
 }
 
+
+.form-group{
+  position: relative;
+  margin-bottom: 15px;
+
+}
+
+.big-label {
+   position: absolute;
+   top:1.5rem;
+   padding: 0 1rem ;
+   transition: all 0.2s linear;
+   color:#6C757D;
+   font-size: 0.9rem;
+ }
+
+.small-label {
+  position: absolute;
+  top:0.3rem;
+  color: #6C757D;
+  font-size: 0.8rem;
+  padding-left: 1em;
+  transition: all 0.2s linear;
+
+}
+
+
+input[type = "email"], input[type = "password"], input[type = "text"] {
+  border: 1px solid lightblue;
+  padding-top: 2rem;
+  vertical-align: bottom;
+  height: 3rem;
+  color: #6C757D;
+  font-size: 0.9rem;
+}
+
+input[type = "email"]:focus, input[type = "password"]:focus, input[type = "text"]:focus{
+  border: none;
+}
+
+input[type = "submit"] {
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(163,163,163,1);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(163,163,163,1);
+  box-shadow: 0px 3px 5px 0px rgba(163,163,163,1);
+  background-color: #17b2c8;
+  border: 1px solid rgb(25, 159, 183);
+}
+input[type = "submit"]:disabled, input[type = "submit"]:disabled:hover {
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(163,163,163,1);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(163,163,163,1);
+  box-shadow: 0px 3px 5px 0px rgba(163,163,163,1);
+  background-color: rgba(23, 162, 184, 0.58);
+  border: 1px solid rgba(10, 80, 90, 0.58);
+}
+
+input[type = "submit"]:hover {
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(163,163,163,1);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(163,163,163,1);
+  box-shadow: 0px 1px 1px 0px rgba(163,163,163,1);
+  background-color: #17b2c8;
+  border: 1px solid rgb(25, 159, 183);
+}
+
+
+
+
+input::-webkit-input-placeholder       {text-indent: 0px;   transition: text-indent 1s ease;}
+input::-moz-placeholder                {text-indent: 0px;   transition: text-indent 1s ease;}
+input:-moz-placeholder                 {text-indent: 0px;   transition: text-indent 1s ease;}
+input:-ms-input-placeholder            {text-indent: 0px;   transition: text-indent 1s ease;}
+input:focus::-webkit-input-placeholder {text-indent: 500px; transition: text-indent 1s ease;}
+input:focus::-moz-placeholder          {text-indent: 500px; transition: text-indent 1s ease;}
+input:focus:-moz-placeholder           {text-indent: 500px; transition: text-indent 1s ease;}
+input:focus:-ms-input-placeholder      {text-indent: 500px; transition: text-indent 1s ease;}
+
 .alert-box {
-  background-color: bisque;
   height: 2rem;
+  font-size: 0.7rem;
+  font-weight: lighter;
+  box-sizing: border-box;
+
+}
+
+.long{
+  height: 4rem;
+}
+div.card{
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(163,163,163,1);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(163,163,163,1);
+  box-shadow: 0px 3px 5px 0px rgba(163,163,163,1)
+}
+p{
+  font-weight: bolder;
+  text-align: left;
+}
+div.card + div p{
+  color:#17A2B8;
+}
+
+div.card + div p span{
+  color:#6C757D;
+}
+
+input[type = "submit"]{
+
 }

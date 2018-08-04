@@ -1,66 +1,49 @@
-<div class="container-fluid ">
-  <div class="row d-flex justify-content-center h-100 ">
-    <div class=" col-sm-8 col-md-6  col-lg-5 col-xl-3 row-conformity row-centered  mt-3 align-self-center bg-light">
-      <div class="card mt-4 p-3">
 
-
-        <p class ="small">Login into your Company account</p>
-
-        <form class="card form-horizontal" id="email-input" novalidate
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center h-100 bg-dark">
+    <div class=" col-sm-8 col-md-6  col-lg-5 col-xl-3 row-conformity row-centered  mt-0 align-self-center bg-light ">
+      <div class="card mt-4 p-3 ">
+        <h6 class="text-secondary" >Login into your Company account</h6>
+        <form class="card form-control border-0" id="email-input" novalidate
               [formGroup]="loginForm" (submit)="onSignIn(loginForm)">
-
-          <div class="form-group" id="email-form-group">
-
-            <label for="email" [ngClass]="toSmall(loginForm.get('email'), emailFocus)">Input email</label>
-            <input type="email" id="email" class="form-control mt-3 pt-2 pb-4"
+          <div class="form-group mb-0 mt-2 " id="email-form-group">
+            <label for="email" [ngClass]="toSmall(loginForm.get('email'), emailFocus)">Email</label>
+            <input type="email" id="email" class="form-control"
                    formControlName="email" (focus)="emailFocus = true" (blur)="emailFocus = false">
-            <div class="alert-box">
-              <p *ngIf="loginForm.get('email').hasError('required')&&
+            <div class="alert-box ">
+              <p   class="text-danger   pt-2" *ngIf="loginForm.get('email').hasError('required')&&
                         loginForm.get('email').touched">
                 E-mail is required
               </p>
-              <p *ngIf="loginForm.get('email').hasError('pattern')&&
+              <p  class = "pt-2 text-danger" *ngIf="loginForm.get('email').hasError('pattern')&&
                         loginForm.get('email').dirty">
                 Input correct e-mail address
               </p>
             </div>
-
           </div>
-
-          <div class="form-group" id="password-form-group">
-
-            <label for="password">
-              <p [ngClass]="toSmall(loginForm.get('password'), passwordFocus)">Password</p>
-            </label>
-
-            <input type="password" id="password" class="form-control mt-3 pt-2 pb-4"
+          <div class="form-group mb-0" id="password-form-group" >
+            <label for="password" [ngClass]="toSmall(loginForm.get('password'), passwordFocus)">Password</label>
+            <input type="password" id="password" class="form-control"
                    formControlName="password" (focus)="passwordFocus = true" (blur)="passwordFocus = false">
             <div class="alert-box">
-              <p *ngIf="loginForm.get('password').hasError('required')&&
+              <p class="text-danger pt-2" *ngIf="loginForm.get('password').hasError('required')&&
                         loginForm.get('password').touched">
                 Password is required
               </p>
             </div>
-
           </div>
-
-          <div class="alert-box">
-            <p *ngIf="serverError" class="err-msg">Internal server error</p>
-            <p *ngIf="wrongPassword" class="err-msg">Wrong e-mail or login. Try again</p>
+          <div class="alert-box mt-0 mb-0">
+            <p class="text-danger pt-2" *ngIf="serverError" class="err-msg">Internal server error</p>
+            <p  class="text-danger pt-2" *ngIf="wrongPassword" class="err-msg">Wrong e-mail or login. Try again</p>
           </div>
-
-
-          <div class="checkbox mb-3" >
-
+          <div class="checkbox mb-0 mt-1" >
             <input type="checkbox" value="remember-me" id = "remember" >
             <div  class="checkBtn" (click)='toggleKeep()'>.</div>
-            <label class = "checkBx "for="remember" [class.checkBx1]='keepMarker' >Keep me signed in</label>
-
+            <label class = "checkBx text-info"for="remember" [class.checkBx1]='keepMarker' >Keep me signed in</label>
           </div>
-          <input type="submit" class="btn btn-lg btn-block"
+          <input type="submit" class="btn btn-lg  mt-0 pt-1 pb-1 text-light"
                   [disabled]="loginForm.invalid" value="login">
         </form>
-
       </div>
       <div class="mt-4">
         <p class="text-center" ><a (click)="forgetPassword()" style="cursor: pointer">Forgot password?</a></p>

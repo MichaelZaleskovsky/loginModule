@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../../data/User";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {User} from '../../../data/User';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,8 +16,8 @@ export class RegisterComponent implements OnInit {
   firstNameFocus = false;
   secondNameFocus = false;
 
-  wrongPassword: boolean = false;
-  serverError: boolean = false;
+  wrongPassword = false;
+  serverError = false;
 
   regForm: FormGroup;
 
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.regForm = new FormGroup(
       {
-        email: new FormControl("", [
+        email: new FormControl('', [
           Validators.required,
           Validators.pattern('.+@.+\\..+')
         ]),
